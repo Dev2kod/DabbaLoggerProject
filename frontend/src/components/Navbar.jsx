@@ -1,13 +1,11 @@
-import React from "react"
+import React from "react";
 
 const Navbar = () => {
   return (
     <div
       className="
-        absolute
+        sticky
         top-5
-        left-1/2
-        -translate-x-1/2
         px-5
         w-[95%]
         max-w-6xl
@@ -21,17 +19,29 @@ const Navbar = () => {
         shadow-xl
         backdrop-blur-md
         z-50
+                mx-auto
+
       "
       style={{
         fontFamily: "Algance, sans-serif",
         backgroundColor: "#2B2730",
       }}
     >
-      <img width="48" className="hover:scale-110 transition-transform duration-500 cursor-pointer" src="https://img.icons8.com/fluency/96/meal.png" alt="meal"/>
+      <img
+        width="48"
+        className="hover:scale-110 transition-transform duration-500 cursor-pointer"
+        src="https://img.icons8.com/fluency/96/meal.png"
+        alt="meal"
+      />
       <div className="text-4xl">Dabba-Logger</div>
-      <img width="48" className="hover:scale-110 transition-transform duration-500 cursor-pointer" src="https://img.icons8.com/fluency/96/user-male-circle--v1.png" alt="user-male-circle--v1"/>
+      <img
+        width="48"
+        className="hover:scale-110 transition-transform duration-500 cursor-pointer"
+        src="https://img.icons8.com/fluency/96/user-male-circle--v1.png"
+        alt="user-male-circle--v1"
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
