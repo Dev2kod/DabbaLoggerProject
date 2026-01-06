@@ -8,7 +8,7 @@ const Navbar = () => {
         top-5
         left-1/2
         -translate-x-1/2
-        px-8
+        px-5
         w-[95%]
         max-w-6xl
         h-16
@@ -27,9 +27,9 @@ const Navbar = () => {
         backgroundColor: "#2B2730",
       }}
     >
-      <div>Logo</div>
-      <div>Dabba-Logger</div>
-      <div>Profile</div>
+      <img width="48" className="hover:scale-110 transition-transform duration-500 cursor-pointer" src="https://img.icons8.com/fluency/96/meal.png" alt="meal"/>
+      <div className="text-4xl">Dabba-Logger</div>
+      <img width="48" className="hover:scale-110 transition-transform duration-500 cursor-pointer" src="https://img.icons8.com/fluency/96/user-male-circle--v1.png" alt="user-male-circle--v1"/>
     </div>
   )
 }

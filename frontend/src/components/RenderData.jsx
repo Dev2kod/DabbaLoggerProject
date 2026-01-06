@@ -1,24 +1,13 @@
 import axios from 'axios'
-import { useEffect } from 'react'
-import { useState } from 'react'
 
 const RenderData = () => {
-  const [data, setdata] = useState()
-  
-  const fetchData = async()=>{
-  const response = await axios.get('http://localhost:3000')
-  console.log(response.data.msg);
-  setdata(response.data.msg)
-  }
-
-  useEffect(() => {  
-    fetchData();
     
-  }, [])
-  
+  const response = axios.get('http://localhost:3000')
+  const data = response.data
+    console.log(data)
     return (
-    <div className='text-white'>{data}</div>)
-  
+    <div>{data}</div>
+  )
 }
 
 export default RenderData
