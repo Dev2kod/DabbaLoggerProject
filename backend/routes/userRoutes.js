@@ -1,16 +1,17 @@
-const express = require("express")
+const express = require("express");
+const pool = require("../db");
 const router = express.Router();
 
-
-router.post("/register",(req,res)=>{
+router.post("/register",async(req,res)=>{
+    const result = await pool.query()
     res.json({
-        msg: "create user route triggered"
     }).status(200);
 })
 
-router.get("/getUsers",(req,res)=>{
+router.get("/getUsers",async(req,res)=>{
+    const result = await pool.query(`select * from usertable`)
     res.json({
-        msg: "get all users route triggered"
+        result : result.rows
     }).status(200);
 })
 
