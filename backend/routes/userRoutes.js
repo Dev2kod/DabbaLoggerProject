@@ -15,6 +15,16 @@ router.get("/getUsers",async(req,res)=>{
     }).status(200);
 })
 
+router.get("/getUser/:id",async(req,res)=>{
+    const {id} = req.params;
+
+    try{
+
+    }catch(error){
+        
+    }
+})
+
 router.post("/login",(req,res)=>{
     const {username,password} = req.body;
     res.json({
