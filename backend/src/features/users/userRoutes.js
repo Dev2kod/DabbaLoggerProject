@@ -1,5 +1,5 @@
 const express = require("express");
-const pool = require("../db");
+const pool = require("../../config/db");
 const router = express.Router();
 
 router.post("/register",async(req,res)=>{
@@ -17,10 +17,14 @@ router.get("/getUsers",async(req,res)=>{
 
 router.get("/getUser/:id",async(req,res)=>{
     const {id} = req.params;
-
     try{
-
+        const result = await pool.query(`Select * from usertable where Id = ${id}`)
+        console.log(result);
+        
+        res.json({result: result.rows});
     }catch(error){
+        res.json({msg:error}).status(404);
+        console.log(error);
         
     }
 })
