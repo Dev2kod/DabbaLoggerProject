@@ -11,6 +11,8 @@ price int not null
 create table usertable(
     id serial primary key,
     username varchar(255) not null,
-
+    fname
+    lname
+    
 )
 

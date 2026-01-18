@@ -29,14 +29,18 @@ router.get("/getUser/:id",async(req,res)=>{
     }
 })
 
-router.post("/login",(req,res)=>{
-    const {username,password} = req.body;
-    res.json({
-        msg:"User Registered",
-        username: username,
-        password: password
-    })
+router.post("signup",async(req,res)=>{
+    
+    try{
+        const result = await pool.query(`Select * from usertable where Id = ${id}`)
+        console.log(result);
+        
+        res.json({result: result.rows});
+    }catch(error){
+        res.json({msg:error}).status(404);
+        console.log(error);
+        
+    }
 })
-
 
 module.exports = router;
