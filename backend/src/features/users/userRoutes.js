@@ -1,5 +1,6 @@
 const express = require("express");
 const pool = require("../../config/db");
+const { signin } = require("./userControllers");
 const router = express.Router();
 
 router.post("/register",async(req,res)=>{
@@ -29,10 +30,15 @@ router.get("/getUser/:id",async(req,res)=>{
     }
 })
 
+router.post("/signin",signin)
+
 router.post("signup",async(req,res)=>{
-    
+    const {username,fname,lname,password} = req.body
+    if(!(username&&fname&&lname&&password)){
+        return res.status(400).json({error:"all credentials not found"})
+    }
     try{
-        const result = await pool.query(`Select * from usertable where Id = ${id}`)
+        const exist = await pool.query(`Select * from usertable where Id = ${id}`)
         console.log(result);
         
         res.json({result: result.rows});
