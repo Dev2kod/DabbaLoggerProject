@@ -35,11 +35,11 @@ router.post("/signin",signin)
 router.post("signup",async(req,res)=>{
     const {username,fname,lname,password} = req.body
     if(!(username&&fname&&lname&&password)){
-        return res.status(400).json({error:"all credentials not found"})
+        return res.status(400).json({error:"all fields required"})
     }
     try{
-        const exist = await pool.query(`Select * from usertable where Id = ${id}`)
-        console.log(result);
+        const userExists = await pool.query(`Select * from usertable where Id = ${username}`)
+        if(userExists.rows.length>0)
         
         res.json({result: result.rows});
     }catch(error){
