@@ -2,6 +2,7 @@ const express = require("express");
 const pool = require("../../config/db");
 const { signin } = require("./userControllers");
 const router = express.Router();
+const bcrypt = require("bcrypt")
 
 router.post("/register",async(req,res)=>{
     const result = await pool.query()
@@ -38,12 +39,13 @@ router.post("signup",async(req,res)=>{
         return res.status(400).json({error:"all fields required"})
     }
     try{
-        const userExists = await pool.query(`Select * from usertable where Id = ${username}`)
-        if(userExists.rows.length>0)
+        const userExists = await pool.query(`Select * from usertable where Id = $1`,[username])
+        if(userExists.rows.length>0){
+            return res.status(401).json({msg:"user already exists"});
+        }
         
-        res.json({result: result.rows});
     }catch(error){
-        res.json({msg:error}).status(404);
+        res.json({msg:error}).status(404); 
         console.log(error);
         
     }
