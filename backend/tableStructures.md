@@ -1,18 +1,23 @@
-### meals table ###
-create table meals(
-id serial Primary key,
-userId int references usertable(id) on delete cascade,
-isNight bool default FALSE,
-date Date not null, 
-price int not null
+create table users(
+id serial primary key,
+username varchar(255) unique not null,
+name varchar(255) not null,
+password text not null,
+created_at timestamp default now()  
 )
 
-### user table
-create table usertable(
-    id serial primary key,
-    username varchar(255) not null,
-    fname
-    lname
-    
-)
+create table transactions(
+id serial primary key,
+user_id int not null,
+contact_id int not null,
+contact_name varchar(255) not null,
 
+CONSTRAINT fk_transaction_user
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE CASCADE,
+
+  CONSTRAINT fk_transaction_contract
+    FOREIGN KEY (contact_id)
+    REFERENCES contact(id)
+    ON DELETE CASCADE) 
